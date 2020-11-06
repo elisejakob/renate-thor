@@ -3,8 +3,7 @@ import sanityClient from './sanityClient'
 
 const routesQuery = `
   {
-    "sessions": *[_type == "session"],
-    "speakers": *[_type == "person" && defined(slug.current)]
+    "projects": *[_type == "project"]
   }
 `
 
@@ -29,27 +28,20 @@ export default {
    */
   loading: { color: '#fff' },
 
-  /*
-   ** Global CSS
-   */
-  css: [{ src: 'normalize.css' }],
+  /* Global CSS */
+  css: [
+    '@/assets/css/main.scss'
+  ],
 
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/eventInformation'],
+  plugins: [],
 
   /*
    ** Nuxt.js modules
    */
   modules: ['@nuxtjs/pwa'],
-
-  /*
-   ** Set global info from sanity document
-   */
-  eventInformation: () => {
-    return sanityClient.fetch('*[_id == "eventInformation"]').then(res => res)
-  },
 
   /*
    ** Generate dynamic routes from data from sanity.
@@ -59,8 +51,7 @@ export default {
     routes: () => {
       return sanityClient.fetch(routesQuery).then(res => {
         return [
-          ...res.sessions.map(item => `/sessions/${item._id}`),
-          ...res.speakers.map(item => `/speakers/${item.slug.current}`)
+          ...res.projects.map(item => `/projects/${item._id}`)
         ]
       })
     }
@@ -70,38 +61,5 @@ export default {
    ** Build configuration
    */
   build: {
-    postcss: {
-      plugins: {
-        'postcss-import': {},
-        'postcss-preset-env': {
-          stage: 3,
-          features: {
-            'color-mod-function': { unresolved: 'warn' },
-            'nesting-rules': true,
-            'custom-media-queries': {
-              preserve: false
-            },
-            'custom-properties': {
-              preserve: false
-            }
-          }
-        }
-      }
-    },
-
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
   }
 }

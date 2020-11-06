@@ -2,7 +2,6 @@ export default {
   name: 'mainImage',
   title: 'Image',
   type: 'image',
-  description: 'Used for social media previews etc. Upload the highest possible resolution.',
   options: {
     hotspot: true
   },
@@ -20,7 +19,7 @@ export default {
       type: 'string',
       title: 'Alternative text',
       validation: Rule => Rule.error('You have to fill out the alternative text.').required(),
-      description: 'Important for SEO and accessiblity.',
+      description: 'Describe what the image portrays to people using screen readers. Important for SEO and accessiblity.',
       options: {
         isHighlighted: true
       }

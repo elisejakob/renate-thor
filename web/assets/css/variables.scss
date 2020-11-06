@@ -1,0 +1,39 @@
+/* FONTS — — — — — — — — — — — — */
+
+$sans-serif: sans-serif;
+
+
+/* COLORS — — — — — — — — — — — — */
+
+$color-white: #fff;
+$color-black: #000;
+$color-red: crimson;
+
+/* IN USE — — — — — — — — — — — — */
+
+$color-background: $color-red;
+$color-text: $color-white;
+
+
+
+/* WIDTHS & SPACING — — — — — — — — — — — — */
+
+$width-xs: 21rem;
+$width-s: 30rem;
+$width-m: 42rem;
+$width-l: 56rem;
+
+$spacing-l: 5rem;
+$spacing-m: 3rem;
+$spacing-s: 1rem;
+
+$font-m: 1.8rem;
+$font-l: 4.2rem;
+
+
+/* MEDIA QUERIES — — — — — — — — — — — — */
+
+$media-s: 700px;
+$media-m: 1000px;
+$media-l: 1600px;
+$media-xl: 1900px;

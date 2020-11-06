@@ -1,57 +1,59 @@
 <template>
-  <section class="container">
-    <h1 class="title">Code of conduct</h1>
+  <main class="about">
+    Om :)
+    <p class="lead">{{ lead }}</p>
     <BlockContent v-if="body" :blocks="body" :serializers="serializers" />
-  </section>
+    <Content v-if="content" :sections="content" />
+  </main>
 </template>
 
 <script>
 import sanityClient from '~/sanityClient'
 import EventBlock from '~/components/blockContent/EventBlock'
-import PersonBlock from '~/components/blockContent/PersonBlock'
+import Content from '~/components/Content'
 import BlockContent from 'sanity-blocks-vue-component'
 
 const query = `
-  *[_id == "codeOfConduct"][0] {
+  *[_id == "about"][0] {
+    lead,
     body[] {
       ...,
       children[] {
         ...,
-        event->,
-        person->
+        event->
       }
-    }
+    },
+    content
   }
 `
 export default {
   components: {
-    BlockContent
+    BlockContent,
+    Content
   },
   data() {
     return {
       serializers: {
         types: {
-          eventReference: EventBlock,
-          personReference: PersonBlock
+          eventReference: EventBlock
         }
       }
     }
   },
   async asyncData() {
     return await sanityClient.fetch(query)
+  },
+  head() {
+    return {
+      title: 'Renate Thor: About',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.lead
+        }
+      ]
+    }
   }
 }
 </script>
-
-<style scoped>
-.title {
-  margin-bottom: 0.5em;
-}
-
-.container {
-  max-width: 40rem;
-  padding: 0 1rem;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-}
-</style>

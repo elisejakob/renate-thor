@@ -1,15 +1,33 @@
 export default {
-  name: 'codeOfConduct',
+  name: 'about',
   type: 'document',
-  title: 'Code of Conduct',
+  title: 'About',
   __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
   fields: [
     {
+      name: 'lead',
+      type: 'text',
+      title: 'Lead'
+    },
+    {
       name: 'body',
-      description:
-        'A code of conduct is one of several things that helps you to make sure that all participants will have a great time!',
       type: 'bodyPortableText',
-      title: 'Code of Conduct'
+      title: 'Body'
+    },
+    {
+      name: 'content',
+      type: 'array',
+      title: 'Content',
+      of: [
+        {
+          type: 'richText',
+          title: 'Text'
+        },
+        {
+          type: 'mainImage',
+          title: 'Image'
+        }
+      ]
     }
   ],
   preview: {

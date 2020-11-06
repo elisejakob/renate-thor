@@ -3,7 +3,6 @@
 </template>
 
 <script>
-/* eslint-disable vue/require-default-prop */
 import sanityClient from '~/sanityClient'
 import imageUrlBuilder from '@sanity/image-url'
 const builder = imageUrlBuilder(sanityClient)
@@ -43,3 +42,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+img {
+  width: 100%;
+}
+</style>

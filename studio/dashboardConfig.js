@@ -1,11 +1,5 @@
 export default {
   widgets: [
-    {
-      name: 'sanity-tutorials',
-      options: {
-        templateRepoId: 'sanity-io/sanity-template-nuxt-events'
-      }
-    },
     {name: 'structure-menu'},
     {
       name: 'project-info',
@@ -46,7 +40,7 @@ export default {
     {name: 'project-users', layout: {height: 'auto'}},
     {
       name: 'document-list',
-      options: {title: 'Recently created sessions', order: '_createdAt desc', types: ['session']},
+      options: {title: 'Recently created projects', order: '_createdAt desc', types: ['project']},
       layout: {width: 'medium'}
     }
   ]

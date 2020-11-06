@@ -1,7 +1,7 @@
 <template>
   <main>
-    Forsiden
-    <ProjectList :projects="projects" />
+    Alle prosjekter
+    <ProjectList v-if="projects" :projects="projects" />
   </main>
 </template>
 
@@ -11,20 +11,18 @@ import ProjectList from '~/components/ProjectList'
 
 const query = `
   {
-    "projects": *[_type == "project" && featured]
+    "projects": *[_type == "project"]
   }
 `
 
 export default {
-  components: {
-    ProjectList
-  },
+  components: { ProjectList },
   async asyncData() {
     return await sanityClient.fetch(query)
   },
   head() {
     return {
-      title: 'Renate Thor',
+      title: 'Renate Thor: Projects',
       meta: [
         {
           hid: 'description',
@@ -36,3 +34,4 @@ export default {
   }
 }
 </script>
+
