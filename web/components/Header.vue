@@ -18,13 +18,13 @@ header {
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
+  padding: 1rem;
 
   .site-title {
     font-family: $sans-serif;
     font-weight: 400;
-    font-size: $font-l;
+    font-size: 1rem;
     margin: 0;
-    line-height: 1;
   }
   a {
     display: inline-block;
@@ -34,7 +34,6 @@ header {
   nav a {
     margin-left: 2rem;
     transition: all .24s ease;
-    font-size: $font-m;
 
     &:hover {
       color: inherit;

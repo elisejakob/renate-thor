@@ -1,11 +1,10 @@
 <template>
   <main class="project">
-    Ett prosjekt
     <h1 class="project-title">
       {{ title }}
     </h1>
     <div class="project-lead">
-      <p class="lead">{{ summary }}</p>
+      <p class="lead">{{ lead }}</p>
     </div>
     <figure v-if="image" class="project-image">
       <SanityImage :image="image" />

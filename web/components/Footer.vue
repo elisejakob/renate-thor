@@ -1,5 +1,6 @@
 <template>
   <footer>
+    <a href="https://instagram.com/renatethor" target="_blank">@renatethor</a>
     <a href="mailto:renatethor@gmail.com" target="_blank">renatethor@gmail.com</a>
   </footer>
 </template>
@@ -7,14 +8,12 @@
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 footer {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  padding-bottom: 10rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
 
   a {
-    grid-column: span 4;
-    font-size: 1.6rem;
-    font-family: $sans-serif;
+    display: block;
   }
 }
 </style>

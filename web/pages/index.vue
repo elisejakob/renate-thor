@@ -1,6 +1,5 @@
 <template>
   <main>
-    Forsiden
     <ProjectList :projects="projects" />
   </main>
 </template>
