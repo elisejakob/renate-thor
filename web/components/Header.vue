@@ -18,7 +18,7 @@ header {
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
-  padding: 1rem;
+  padding: .4rem;
 
   .site-title {
     font-family: $sans-serif;

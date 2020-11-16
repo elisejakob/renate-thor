@@ -1,5 +1,5 @@
 <template>
-  <main class="project">
+  <main class="project" :style="cssVars">
     <h1 class="project-title">
       {{ title }}
     </h1>
@@ -52,6 +52,20 @@ export default {
   async asyncData({ params }) {
     return await sanityClient.fetch(query, params)
   },
+  computed: {
+    cssVars() {
+      if (this.colors && this.colors.bgColor && this.colors.textColor) {
+        return {
+          '--bg-color': this.colors.bgColor.hex,
+          '--text-color': this.colors.textColor.hex,
+        }
+      }
+      return {
+        '--bg-color': '#fff',
+        '--text-color': '#000',
+      }
+    }
+  },
   head() {
     return {
       title: 'Renate Thor: ' + this.title,
@@ -74,6 +88,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 2rem;
+  background: var(--bg-color);
+  color: var(--text-color);
   &-title {
     grid-column: 1 / span 12;
     font-size: $font-l;

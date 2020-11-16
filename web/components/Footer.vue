@@ -10,7 +10,7 @@
 footer {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: .4rem;
 
   a {
     display: block;

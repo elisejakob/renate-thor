@@ -4,11 +4,11 @@
       <SanityImage v-if="project.image" :image="project.image" />
     </figure>
     <div class="project-text">
-      <h3>
+      <h2>
         <nuxt-link :to="{ path: `/projects/${project._id}` }">
           {{ project.title }}
         </nuxt-link>
-      </h3>
+      </h2>
       <p v-if="project.lead">
         {{ project.lead }}
       </p>
@@ -48,7 +48,7 @@ export default {
   display: flex;
   justify-content: space-between;
   background: var(--bg-color);
-  padding: 1rem;
+  padding: .4rem;
 
   a {
     text-decoration: none;
@@ -56,10 +56,19 @@ export default {
   }
   &-image {
     margin: 0;
-    width: 60%;
+    height: 80vh;
+
+    img {
+      height: 80vh;
+      width: auto;
+    }
   }
   &-text {
     color: var(--text-color);
+
+    p {
+      margin: 0;
+    }
   }
 
   &:nth-child(odd) {
