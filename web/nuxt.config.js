@@ -8,7 +8,8 @@ const routesQuery = `
 `
 
 export default {
-  mode: 'spa',
+  ssr: true,
+  target: 'static',
 
   /*
    ** Headers of the page
