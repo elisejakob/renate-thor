@@ -7,10 +7,13 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // document types
 import about from './documents/about'
 import project from './documents/project'
+import general from './documents/general'
 
 // Object types
 import mainImage from './objects/mainImage'
 import richText from './objects/richText'
+import palette from './objects/palette'
+import footer from './objects/footer'
 import bioPortableText from './objects/bioPortableText'
 import bodyPortableText from './objects/bodyPortableText'
 
@@ -25,11 +28,14 @@ export default createSchema({
     // in the studio.
     about,
     project,
+    general,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     mainImage,
     richText,
+    palette,
+    footer,
     bioPortableText,
     bodyPortableText
   ])

@@ -14,9 +14,13 @@ export default {
       type: 'datetime'
     },
     {
-      title: 'Feature on front page',
+      title: 'Feature',
       name: 'featured',
       type: 'boolean'
+    },
+    {
+      name: 'colors',
+      type: 'palette'
     },
     {
       name: 'image',
@@ -27,11 +31,6 @@ export default {
       name: 'lead',
       type: 'text',
       title: 'Lead'
-    },
-    {
-      name: 'description',
-      type: 'bodyPortableText',
-      title: 'Description'
     },
     {
       name: 'content',

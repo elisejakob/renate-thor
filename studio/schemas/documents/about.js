@@ -2,7 +2,6 @@ export default {
   name: 'about',
   type: 'document',
   title: 'About',
-  __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
   fields: [
     {
       name: 'lead',
