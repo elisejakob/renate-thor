@@ -19,7 +19,7 @@ export default {
                 },
                 {
                   buildHookId: '5fa344be95a27e41ba731be9',
-                  title: 'Events Website',
+                  title: 'Website',
                   name: 'renate-thor',
                   apiId: 'a32f5555-a97d-4e55-9fac-52f30fc1012f'
                 }
