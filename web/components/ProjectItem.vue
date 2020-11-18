@@ -52,7 +52,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   background: var(--bg-color);
   padding: var(--spacing-m);
   position: relative;

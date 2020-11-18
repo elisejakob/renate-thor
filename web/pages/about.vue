@@ -1,6 +1,5 @@
 <template>
   <main class="about">
-    Om :)
     <p class="lead">{{ lead }}</p>
     <BlockContent v-if="body" :blocks="body" :serializers="serializers" />
     <Content v-if="content" :sections="content" />
@@ -57,3 +56,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '@/assets/css/variables.scss';
+.about {
+  padding: var(--spacing-m);
+}
+</style>

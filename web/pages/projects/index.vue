@@ -1,6 +1,5 @@
 <template>
   <main>
-    Alle prosjekter
     <ProjectList v-if="projects" :projects="projects" />
   </main>
 </template>

@@ -5,7 +5,7 @@
     </h1>
     <nav>
       <nuxt-link to="/projects">Work</nuxt-link>
-      <a href="https://renatethor.bigcartel.com/">Shop</a>
+      <a href="https://renatethor.bigcartel.com/" target="_blank">Shop</a>
       <nuxt-link to="/about">About</nuxt-link>
       <nuxt-link to="/">Contact</nuxt-link>
     </nav>
@@ -22,7 +22,6 @@ header {
 
   .site-title {
     font-family: var(--sans-serif);
-    font-weight: 400;
     font-size: 1rem;
     margin: 0;
   }

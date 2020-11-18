@@ -10,7 +10,7 @@
 footer {
   display: flex;
   justify-content: space-between;
-  padding: .4rem;
+  padding: var(--spacing-m);
 
   a {
     display: block;

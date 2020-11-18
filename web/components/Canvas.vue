@@ -30,8 +30,8 @@ export default {
   computed: {
     canvasSize() {
       return {
-        width: 200,
-        height: 200
+        width: 500,
+        height: 800
       }
     }
   },
@@ -46,7 +46,7 @@ export default {
 
       ctx.strokeStyle = this.color;
       ctx.lineJoin = 'round';
-      ctx.lineWidth = 12;
+      ctx.lineWidth = 42;
 
       for (var i = 0; i < this.points.x.length; i++) {
         ctx.beginPath();
@@ -89,8 +89,7 @@ export default {
   width: 100%;
 
   .paper {
-    background: white;
-    cursor: none;
+    background: transparent;
   }
 }
 </style>
