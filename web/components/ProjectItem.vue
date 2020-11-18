@@ -1,5 +1,6 @@
 <template>
   <li class="project" :style="cssVars">
+    <Canvas :id="project._id" :color="project.colors.bgColor.hex" />
     <figure class="project-image">
       <SanityImage v-if="project.image" :image="project.image" />
     </figure>
@@ -16,10 +17,14 @@
   </li>
 </template>
 <script>
+import Canvas from '~/components/Canvas'
 import SanityImage from '~/components/SanityImage'
 
 export default {
-  components: { SanityImage },
+  components: {
+    Canvas,
+    SanityImage
+  },
   props: {
     project: Object
   },
@@ -50,6 +55,7 @@ export default {
   align-items: flex-end;
   background: var(--bg-color);
   padding: var(--spacing-m);
+  position: relative;
 
   a {
     text-decoration: none;

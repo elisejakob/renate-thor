@@ -1,15 +1,21 @@
 <template>
   <div class="canvasbox">
-    <canvas id="paper" class="paper" :width="canvasSize.width" :height="canvasSize.height" @mousemove="draw"></canvas>
+    <canvas :id="`paper-${id}`" class="paper" :width="canvasSize.width" :height="canvasSize.height" @mousemove="draw"></canvas>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    id: String,
+    color: {
+      type: String,
+      default: 'crimson'
+    }
+  },
   data() {
     return {
       canvas: null,
-      color: 'crimson',
       cursor: {
         x: 0,
         y: 0
@@ -24,8 +30,8 @@ export default {
   computed: {
     canvasSize() {
       return {
-        width: 800,
-        height: 600
+        width: 200,
+        height: 200
       }
     }
   },
@@ -55,7 +61,7 @@ export default {
       }
     },
     draw(e) {
-      this.addPoint(e.pageX, e.pageY, true);
+      this.addPoint(e.offsetX, e.offsetY, true);
       this.drawLine();
     },
     resizeCanvas() {
@@ -67,7 +73,7 @@ export default {
   },
   mounted() {
     window.addEventListener("resize", this.resizeCanvas);
-    const c = document.getElementById('paper');
+    const c = document.getElementById('paper-' + this.id);
     this.canvas = c.getContext('2d');
   }
 }
@@ -75,7 +81,7 @@ export default {
 
 <style lang="scss" scoped>
 .canvasbox {
-  //position: absolute;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;

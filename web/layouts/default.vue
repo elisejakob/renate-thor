@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Canvas />
     <Header />
     <nuxt />
     <Footer />
@@ -10,13 +9,11 @@
 <script>
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
-import Canvas from '~/components/Canvas.vue'
 
 export default {
   components: {
     Header,
-    Footer,
-    Canvas
+    Footer
   }
 }
 </script>
