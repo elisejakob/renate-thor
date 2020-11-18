@@ -4,7 +4,7 @@
       {{ title }}
     </h1>
     <div class="project-lead">
-      <p class="lead">{{ lead }}</p>
+      <p>{{ lead }}</p>
     </div>
     <figure v-if="image" class="project-image">
       <SanityImage :image="image" />
@@ -90,10 +90,11 @@ export default {
   grid-column-gap: 2rem;
   background: var(--bg-color);
   color: var(--text-color);
+  padding: var(--spacing-m);
   &-title {
     grid-column: 1 / span 12;
-    font-size: $font-l;
-    font-family: $sans-serif;
+    font-size: var(--font-l);
+    font-family: var(--sans-serif);
     margin: 0 0 4rem;
 
     opacity: 0;

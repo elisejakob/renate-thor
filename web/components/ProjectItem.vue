@@ -47,8 +47,9 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   background: var(--bg-color);
-  padding: .4rem;
+  padding: var(--spacing-m);
 
   a {
     text-decoration: none;
@@ -65,9 +66,16 @@ export default {
   }
   &-text {
     color: var(--text-color);
+    padding-left: var(--spacing-m);
+    max-width: 50%;
+
+    h2 {
+      font-size: var(--font-l);
+    }
 
     p {
       margin: 0;
+      font-size: var(--font-s);
     }
   }
 
@@ -77,6 +85,8 @@ export default {
     }
     .project-text {
       order: 1;
+      padding-left: 0;
+      padding-right: var(--spacing-m);
     }
   }
 }

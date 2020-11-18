@@ -1,34 +1,26 @@
-/* FONTS — — — — — — — — — — — — */
+:root {
+  --sans-serif: sans-serif;
 
-$sans-serif: sans-serif;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-red: crimson;
 
+  --color-background: var(--color-red);
+  --color-text: var(--color-white);
 
-/* COLORS — — — — — — — — — — — — */
+  --width-xs: 21rem;
+  --width-s: 30rem;
+  --width-m: 42rem;
+  --width-l: 56rem;
 
-$color-white: #fff;
-$color-black: #000;
-$color-red: crimson;
+  --spacing-l: 5rem;
+  --spacing-m: 1.3rem;
+  --spacing-s: 1rem;
 
-/* IN USE — — — — — — — — — — — — */
-
-$color-background: $color-red;
-$color-text: $color-white;
-
-
-
-/* WIDTHS & SPACING — — — — — — — — — — — — */
-
-$width-xs: 21rem;
-$width-s: 30rem;
-$width-m: 42rem;
-$width-l: 56rem;
-
-$spacing-l: 5rem;
-$spacing-m: 3rem;
-$spacing-s: 1rem;
-
-$font-m: 1.8rem;
-$font-l: 4.2rem;
+  --font-s: .8rem;
+  --font-m: 1.8rem;
+  --font-l: 2.2rem;
+}
 
 
 /* MEDIA QUERIES — — — — — — — — — — — — */
