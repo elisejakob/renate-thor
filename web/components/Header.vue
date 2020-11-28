@@ -17,8 +17,9 @@
 header {
   display: flex;
   justify-content: space-between;
-  text-transform: uppercase;
-  padding: .4rem var(--spacing-m);
+  padding: var(--spacing-m) var(--spacing-l);
+  position: relative;
+  z-index: 3;
 
   .site-title {
     font-family: var(--sans-serif);

@@ -24,12 +24,9 @@ export default {
         x: [],
         y: [],
         drag: []
-      }
-    }
-  },
-  computed: {
-    canvasSize() {
-      return {
+      },
+      line: 120,
+      canvasSize: {
         width: 500,
         height: 800
       }
@@ -46,7 +43,7 @@ export default {
 
       ctx.strokeStyle = this.color;
       ctx.lineJoin = 'round';
-      ctx.lineWidth = 42;
+      ctx.lineWidth = this.line;
 
       for (var i = 0; i < this.points.x.length; i++) {
         ctx.beginPath();
@@ -65,13 +62,16 @@ export default {
       this.drawLine();
     },
     resizeCanvas() {
-      console.log('resizing i promise')
+      console.log('resizing i promise', this.$parent.$el.offsetHeight, this.$parent.$el.offsetWidth);
+      this.canvasSize.height = this.$parent.$el.offsetHeight - 12;
+      this.canvasSize.width = this.$parent.$el.offsetWidth - 12;
     }
   },
   destroyed() {
     window.removeEventListener("resize", this.resizeCanvas);
   },
   mounted() {
+    this.resizeCanvas();
     window.addEventListener("resize", this.resizeCanvas);
     const c = document.getElementById('paper-' + this.id);
     this.canvas = c.getContext('2d');
@@ -87,6 +87,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 1;
 
   .paper {
     background: transparent;

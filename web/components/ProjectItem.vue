@@ -1,6 +1,6 @@
 <template>
   <li class="project" :style="cssVars">
-    <Canvas :id="project._id" :color="project.colors.bgColor.hex" />
+    <Canvas :id="project._id" :color="project.colors.textColor.hex" class="canvas" />
     <figure class="project-image">
       <SanityImage v-if="project.image" :image="project.image" />
     </figure>
@@ -11,7 +11,8 @@
         </nuxt-link>
       </h2>
       <p v-if="project.lead">
-        {{ project.lead }}
+        <!--{{ project.lead }}-->
+        En kortere tekst enn lorem ipsum som var lagt inn før. Renate har lovet å gjøre leksa si.
       </p>
     </div>
   </li>
@@ -52,9 +53,8 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: var(--bg-color);
-  padding: var(--spacing-m);
+  border: 6px solid var(--text-color);
+  grid-column: span 12;
   position: relative;
 
   a {
@@ -64,6 +64,8 @@ export default {
   &-image {
     margin: 0;
     height: 80vh;
+    position: relative;
+    z-index: 12;
 
     img {
       height: 80vh;
@@ -72,11 +74,14 @@ export default {
   }
   &-text {
     color: var(--text-color);
-    padding-left: var(--spacing-m);
-    max-width: 50%;
+    padding: var(--spacing-s);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     h2 {
-      font-size: var(--font-l);
+      font-size: var(--font-m);
     }
 
     p {
@@ -86,13 +91,12 @@ export default {
   }
 
   &:nth-child(odd) {
+    grid-column: span 6;
     .project-image {
       order: 2;
     }
     .project-text {
       order: 1;
-      padding-left: 0;
-      padding-right: var(--spacing-m);
     }
   }
 }
