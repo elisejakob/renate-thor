@@ -1,6 +1,6 @@
 <template>
   <main class="about" :style="cssVars">
-    <Canvas id="about" color="lime" class="canvas" />
+    <Canvas id="about" color="drawingColor" class="canvas" />
     <p class="lead">{{ lead }}</p>
     <BlockContent v-if="body" :blocks="body" :serializers="serializers" />
     <Content v-if="content" :sections="content" />
@@ -24,7 +24,11 @@ const query = `
         event->
       }
     },
-    content
+    content,
+    colors {
+      lightColor,
+      darkColor
+    }
   }
 `
 export default {
@@ -54,6 +58,12 @@ export default {
         '--bg-color': '#fff',
         '--text-color': this.$store.state.color,
       }
+    },
+    drawingColor() {
+      if (this.colors.lightColor) {
+        return this.colors.lightColor.hex
+      }
+      return '#000'
     }
   },
   async asyncData() {
@@ -72,7 +82,11 @@ export default {
     }
   },
   mounted() {
-    this.$store.commit('setColor', 'lime')
+    if (this.colors && this.colors.darkColor && this.colors.lightColor) {
+      this.$store.commit('setColor', this.colors.lightColor.hex)
+    } else {
+      this.$store.commit('setColor', '#000')
+    }
   }
 }
 </script>
