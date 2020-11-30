@@ -1,7 +1,7 @@
 <template>
   <li class="project" :style="cssVars">
     <div class="project-content">
-      <Canvas :id="project._id" :color="project.colors.textColor.hex" class="canvas" />
+      <Canvas :id="project._id" :color="project.colors.lightColor.hex" class="canvas" />
       <figure class="project-image">
         <nuxt-link :to="{ path: `/projects/${project._id}` }">
           <SanityImage v-if="project.image" :image="project.image" />
@@ -33,10 +33,10 @@ export default {
   },
   computed: {
     cssVars() {
-      if (this.project.colors && this.project.colors.bgColor && this.project.colors.textColor) {
+      if (this.project.colors && this.project.colors.darkColor && this.project.colors.lightColor) {
         return {
-          '--bg-color': this.project.colors.bgColor.hex,
-          '--text-color': this.project.colors.textColor.hex,
+          '--bg-color': this.project.colors.darkColor.hex,
+          '--text-color': this.project.colors.lightColor.hex,
         }
       }
       return {

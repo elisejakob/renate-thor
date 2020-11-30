@@ -52,10 +52,10 @@ export default {
   },
   computed: {
     cssVars() {
-      if (this.colors && this.colors.bgColor && this.colors.textColor) {
+      if (this.colors && this.colors.darkColor && this.colors.lightColor) {
         return {
-          '--bg-color': this.colors.bgColor.hex,
-          '--text-color': this.colors.textColor.hex,
+          '--bg-color': this.colors.darkColor.hex,
+          '--text-color': this.colors.lightColor.hex,
         }
       }
       return {
@@ -77,8 +77,8 @@ export default {
     }
   },
   mounted() {
-    if (this.colors && this.colors.bgColor && this.colors.textColor) {
-      this.$store.commit('setColor', this.colors.textColor.hex)
+    if (this.colors && this.colors.darkColor && this.colors.lightColor) {
+      this.$store.commit('setColor', this.colors.lightColor.hex)
     } else {
       this.$store.commit('setColor', '#000')
     }

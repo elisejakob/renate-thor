@@ -27,6 +27,10 @@ export default {
           title: 'Image'
         }
       ]
+    },
+    {
+      name: 'colors',
+      type: 'palette'
     }
   ],
   preview: {

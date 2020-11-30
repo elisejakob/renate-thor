@@ -17,10 +17,10 @@
 export default {
   computed: {
     cssVars() {
-      if (this.colors && this.colors.bgColor && this.colors.textColor) {
+      if (this.colors && this.colors.darkColor && this.colors.lightColor) {
         return {
-          '--bg-color': this.colors.bgColor.hex,
-          '--text-color': this.colors.textColor.hex,
+          '--bg-color': this.colors.darkColor.hex,
+          '--text-color': this.colors.lightColor.hex,
         }
       }
       return {

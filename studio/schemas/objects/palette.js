@@ -4,14 +4,14 @@ export default {
   title: 'Color palette',
   fields: [
     {
-      name: 'bgColor',
+      name: 'lightColor',
       type: 'color',
-      title: 'Background color'
+      title: 'Light mode color'
     },
     {
-      name: 'textColor',
+      name: 'darkColor',
       type: 'color',
-      title: 'Text color'
+      title: 'Dark mode color'
     },
   ]
 }
