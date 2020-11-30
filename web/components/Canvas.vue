@@ -62,7 +62,6 @@ export default {
       this.drawLine();
     },
     resizeCanvas() {
-      console.log('resizing i promise', this.$parent.$el.offsetHeight, this.$parent.$el.offsetWidth);
       this.canvasSize.height = this.$parent.$el.offsetHeight - 12;
       this.canvasSize.width = this.$parent.$el.offsetWidth - 12;
     }
@@ -88,6 +87,7 @@ export default {
   left: 0;
   width: 100%;
   z-index: 1;
+  overflow: hidden;
 
   .paper {
     background: transparent;

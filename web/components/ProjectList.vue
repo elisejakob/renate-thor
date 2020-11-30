@@ -31,8 +31,9 @@ export default {
   margin: 0;
   padding: 0 var(--spacing-m);
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: var(--spacing-m);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
 }
 </style>

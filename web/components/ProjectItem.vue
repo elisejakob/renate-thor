@@ -1,19 +1,21 @@
 <template>
   <li class="project" :style="cssVars">
-    <Canvas :id="project._id" :color="project.colors.textColor.hex" class="canvas" />
-    <figure class="project-image">
-      <SanityImage v-if="project.image" :image="project.image" />
-    </figure>
-    <div class="project-text">
-      <h2>
+    <div class="project-content">
+      <Canvas :id="project._id" :color="project.colors.textColor.hex" class="canvas" />
+      <figure class="project-image">
         <nuxt-link :to="{ path: `/projects/${project._id}` }">
-          {{ project.title }}
+          <SanityImage v-if="project.image" :image="project.image" />
         </nuxt-link>
-      </h2>
-      <p v-if="project.lead">
-        <!--{{ project.lead }}-->
-        En kortere tekst enn lorem ipsum som var lagt inn før. Renate har lovet å gjøre leksa si.
-      </p>
+      </figure>
+      <div class="project-text">
+        <h2>
+          {{ project.title }}
+        </h2>
+        <p v-if="project.lead">
+          <!--{{ project.lead }}-->
+          En kortere tekst enn lorem ipsum som var lagt inn før. Renate har lovet å gjøre leksa si.
+        </p>
+      </div>
     </div>
   </li>
 </template>
@@ -50,31 +52,32 @@ export default {
 @import '@/assets/css/variables.scss';
 
 .project {
-  width: 100%;
+  width: 66%;
+  padding: var(--spacing-s);
   display: flex;
-  justify-content: space-between;
-  border: 6px solid var(--text-color);
-  grid-column: span 12;
-  position: relative;
+  align-items: stretch;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    border: 6px solid var(--text-color);
+    position: relative;
+  }
 
   a {
     text-decoration: none;
     color: inherit;
+    display: block;
   }
   &-image {
     margin: 0;
-    height: 80vh;
     position: relative;
     z-index: 12;
-
-    img {
-      height: 80vh;
-      width: auto;
-    }
+    flex: 1;
   }
   &-text {
     color: var(--text-color);
-    padding: var(--spacing-s);
+    padding: 1.2rem;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -90,13 +93,24 @@ export default {
     }
   }
 
+  img {
+    display: block;
+  }
+
   &:nth-child(odd) {
-    grid-column: span 6;
+    width: 33%;
+    .project-content {
+      flex-direction: column;
+    }
     .project-image {
       order: 2;
     }
     .project-text {
       order: 1;
+
+      p {
+        display: none;
+      }
     }
   }
 }

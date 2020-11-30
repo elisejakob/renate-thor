@@ -1,20 +1,18 @@
 <template>
   <main class="project" :style="cssVars">
-    <h1 class="project-title">
-      {{ title }}
-    </h1>
-    <div class="project-lead">
-      <p>{{ lead }}</p>
-    </div>
     <figure v-if="image" class="project-image">
       <SanityImage :image="image" />
       <figcaption>{{ image.caption }}</figcaption>
     </figure>
+    <div class="project-text">
+      <h1 class="project-title">
+        {{ title }}
+      </h1>
+      <div class="project-lead">
+        <p>{{ lead }}</p>
+      </div>
+    </div>
     <div class="project-content">
-      <BlockContent
-        :blocks="description"
-        v-if="description"
-      />
       <Content v-if="content" :sections="content" />
     </div>
   </main>
@@ -77,6 +75,13 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    if (this.colors && this.colors.bgColor && this.colors.textColor) {
+      this.$store.commit('setColor', this.colors.textColor.hex)
+    } else {
+      this.$store.commit('setColor', '#000')
+    }
   }
 }
 </script>
@@ -88,44 +93,28 @@ export default {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 2rem;
-  background: var(--bg-color);
   color: var(--text-color);
   padding: var(--spacing-m);
-  &-title {
-    grid-column: 1 / span 12;
-    font-size: var(--font-l);
-    font-family: var(--sans-serif);
-    margin: 0 0 4rem;
-
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeDown .8s ease;
-    animation-fill-mode: forwards;
-  }
-  &-subhead,
-  &-type {
-    opacity: .3;
-  }
-  &-lead {
-    grid-column: 1 / span 6;
-  }
   &-image {
-    grid-column: 7 / span 6;
-    padding-top: .6rem;
+    grid-column: 1 / span 6;
 
     img {
       width: 100%;
     }
+  }
+  &-text {
+    grid-column: 7 / span 6;
+  }
+  &-title {
+    font-size: var(--font-l);
+    font-family: var(--sans-serif);
+    margin: 0 0 4rem;
   }
   &-content {
     grid-column: 1 / span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 2rem;
-
-    p, div {
-      grid-column: span 6;
-    }
   }
 }
 @keyframes fadeDown {

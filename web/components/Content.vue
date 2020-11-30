@@ -15,9 +15,9 @@ export default {
   props: {
     sections: Array
   },
-  components: { 
-    ImageWithCaption, 
-    RichText 
+  components: {
+    ImageWithCaption,
+    RichText
   }
 }
 </script>

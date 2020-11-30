@@ -1,5 +1,5 @@
 <template>
-  <main class="about">
+  <main class="about" :style="cssVars">
     <Canvas id="about" color="lime" class="canvas" />
     <p class="lead">{{ lead }}</p>
     <BlockContent v-if="body" :blocks="body" :serializers="serializers" />
@@ -42,6 +42,20 @@ export default {
       }
     }
   },
+  computed: {
+    cssVars() {
+      if (this.colors && this.colors.bgColor && this.colors.textColor) {
+        return {
+          '--bg-color': this.colors.bgColor.hex,
+          '--text-color': this.colors.textColor.hex,
+        }
+      }
+      return {
+        '--bg-color': '#fff',
+        '--text-color': this.$store.state.color,
+      }
+    }
+  },
   async asyncData() {
     return await sanityClient.fetch(query)
   },
@@ -56,6 +70,9 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    this.$store.commit('setColor', 'lime')
   }
 }
 </script>
@@ -65,5 +82,6 @@ export default {
 .about {
   padding: var(--spacing-m);
   font-size: var(--font-xl);
+  color: var(--text-color);
 }
 </style>
