@@ -45,7 +45,7 @@ export default {
       }
     },
     drawingColor() {
-      if (this.project.colors.lightColor) {
+      if (this.project.colors && this.project.colors.lightColor) {
         return this.project.colors.lightColor.hex
       }
       return '#000'
