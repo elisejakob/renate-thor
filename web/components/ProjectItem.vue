@@ -12,8 +12,7 @@
           {{ project.title }}
         </h2>
         <p v-if="project.lead">
-          <!--{{ project.lead }}-->
-          En kortere tekst enn lorem ipsum som var lagt inn før. Renate har lovet å gjøre leksa si.
+          {{ project.lead }}
         </p>
       </div>
     </div>
@@ -34,18 +33,21 @@ export default {
   computed: {
     cssVars() {
       if (this.project.colors && this.project.colors.darkColor && this.project.colors.lightColor) {
-        return {
-          '--bg-color': this.project.colors.darkColor.hex,
-          '--text-color': this.project.colors.lightColor.hex,
+        if (this.$store.state.theme === 'dark') {
+          return {
+            '--color-text': this.project.colors.darkColor.hex,
+          }
         }
-      }
-      return {
-        '--bg-color': '#fff',
-        '--text-color': '#000',
+        return {
+          '--color-text': this.project.colors.lightColor.hex,
+        }
       }
     },
     drawingColor() {
       if (this.project.colors && this.project.colors.lightColor) {
+        if (this.$store.state.theme === 'dark') {
+          return this.project.colors.darkColor.hex
+        }
         return this.project.colors.lightColor.hex
       }
       return '#000'
@@ -66,7 +68,7 @@ export default {
   &-content {
     display: flex;
     justify-content: space-between;
-    border: 6px solid var(--text-color);
+    border: 6px solid var(--color-text);
     position: relative;
   }
 
@@ -82,7 +84,7 @@ export default {
     flex: 1;
   }
   &-text {
-    color: var(--text-color);
+    color: var(--color-text);
     padding: 1.2rem;
     flex: 1;
     display: flex;

@@ -8,6 +8,7 @@
 
   --color-background: var(--color-white);
   --color-text: var(--color-black);
+  --color-hover: var(--color-black);
 
   --width-xs: 21rem;
   --width-s: 30rem;
@@ -19,9 +20,15 @@
   --spacing-s: .6rem;
 
   --font-s: .8rem;
-  --font-m: 1.6rem;
+  --font-m: 1.4rem;
   --font-l: 2.2rem;
   --font-xl: 3rem;
+}
+
+body.dark {
+  --color-background: var(--color-black);
+  --color-text: var(--color-white);
+  --color-hover: var(--color-white);
 }
 
 

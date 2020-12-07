@@ -1,29 +1,22 @@
 <template>
   <main class="about" :style="cssVars">
-    <Canvas id="about" color="drawingColor" class="canvas" />
-    <p class="lead">{{ lead }}</p>
-    <BlockContent v-if="body" :blocks="body" :serializers="serializers" />
-    <Content v-if="content" :sections="content" />
+    <CanvasFullPage id="about" :color="drawingColor" class="canvas" />
+    <div class="about-content">
+      <p class="lead">{{ lead }}</p>
+      <Content v-if="content" :sections="content" />
+    </div>
   </main>
 </template>
 
 <script>
 import sanityClient from '~/sanityClient'
-import EventBlock from '~/components/blockContent/EventBlock'
 import Content from '~/components/Content'
-import Canvas from '~/components/Canvas'
+import CanvasFullPage from '~/components/CanvasFullPage'
 import BlockContent from 'sanity-blocks-vue-component'
 
 const query = `
   *[_id == "about"][0] {
     lead,
-    body[] {
-      ...,
-      children[] {
-        ...,
-        event->
-      }
-    },
     content,
     colors {
       lightColor,
@@ -35,16 +28,7 @@ export default {
   components: {
     BlockContent,
     Content,
-    Canvas
-  },
-  data() {
-    return {
-      serializers: {
-        types: {
-          eventReference: EventBlock
-        }
-      }
-    }
+    CanvasFullPage
   },
   computed: {
     cssVars() {
@@ -53,10 +37,6 @@ export default {
           '--bg-color': this.colors.darkColor.hex,
           '--text-color': this.colors.lightColor.hex,
         }
-      }
-      return {
-        '--bg-color': '#fff',
-        '--text-color': this.$store.state.color,
       }
     },
     drawingColor() {
@@ -84,8 +64,6 @@ export default {
   mounted() {
     if (this.colors && this.colors.darkColor && this.colors.lightColor) {
       this.$store.commit('setColor', this.colors.lightColor.hex)
-    } else {
-      this.$store.commit('setColor', '#000')
     }
   }
 }
@@ -97,5 +75,10 @@ export default {
   padding: var(--spacing-m);
   font-size: var(--font-xl);
   color: var(--text-color);
+
+  &-content {
+    position: relative;
+    z-index: 10;
+  }
 }
 </style>

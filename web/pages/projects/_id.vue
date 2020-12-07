@@ -1,19 +1,22 @@
 <template>
   <main class="project" :style="cssVars">
-    <figure v-if="image" class="project-image">
-      <SanityImage :image="image" />
-      <figcaption>{{ image.caption }}</figcaption>
-    </figure>
-    <div class="project-text">
-      <h1 class="project-title">
-        {{ title }}
-      </h1>
-      <div class="project-lead">
-        <p>{{ lead }}</p>
-      </div>
-    </div>
+    <CanvasFullPage id="about" :color="drawingColor" class="canvas" />
     <div class="project-content">
-      <Content v-if="content" :sections="content" />
+      <figure v-if="image" class="project-image">
+        <SanityImage :image="image" />
+        <figcaption>{{ image.caption }}</figcaption>
+      </figure>
+      <div class="project-text">
+        <h1 class="project-title">
+          {{ title }}
+        </h1>
+        <div class="project-lead" v-if="lead">
+          <p>{{ lead }}</p>
+        </div>
+      </div>
+      <div class="project-gallery">
+        <Content v-if="content" :sections="content" />
+      </div>
     </div>
   </main>
 </template>
@@ -24,6 +27,7 @@ import groq from 'groq'
 import sanityClient from '~/sanityClient'
 import SanityImage from '~/components/SanityImage'
 import Content from '~/components/Content'
+import CanvasFullPage from '~/components/CanvasFullPage'
 
 const query = groq`
   *[_type == "project" && _id == $id] {
@@ -45,7 +49,8 @@ export default {
   components: {
     BlockContent,
     SanityImage,
-    Content
+    Content,
+    CanvasFullPage
   },
   async asyncData({ params }) {
     return await sanityClient.fetch(query, params)
@@ -58,10 +63,12 @@ export default {
           '--text-color': this.colors.lightColor.hex,
         }
       }
-      return {
-        '--bg-color': '#fff',
-        '--text-color': '#000',
+    },
+    drawingColor() {
+      if (this.colors.lightColor) {
+        return this.colors.lightColor.hex
       }
+      return '#000'
     }
   },
   head() {
@@ -80,7 +87,11 @@ export default {
     if (this.colors && this.colors.darkColor && this.colors.lightColor) {
       this.$store.commit('setColor', this.colors.lightColor.hex)
     } else {
-      this.$store.commit('setColor', '#000')
+      if (this.$store.state.color === '#000') {
+        this.$store.commit('setColor', '#fff')
+      } else {
+        this.$store.commit('setColor', '#000')
+      }
     }
   }
 }
@@ -90,11 +101,16 @@ export default {
 @import '@/assets/css/variables.scss';
 
 .project {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 2rem;
-  color: var(--text-color);
-  padding: var(--spacing-m);
+  &-content {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 2rem;
+    color: var(--text-color);
+    padding: 0 var(--spacing-m);
+    align-items: center;
+  }
   &-image {
     grid-column: 1 / span 6;
 
@@ -110,7 +126,7 @@ export default {
     font-family: var(--sans-serif);
     margin: 0 0 4rem;
   }
-  &-content {
+  &-gallery {
     grid-column: 1 / span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);

@@ -7,8 +7,9 @@
       <nuxt-link to="/projects">Work</nuxt-link>
       <a href="https://renatethor.bigcartel.com/" target="_blank">Shop</a>
       <nuxt-link to="/about">About</nuxt-link>
-      <a href="/" class="contact"><div class="icon"></div></a>
-      <a href="/" class="contact"><div class="icon"></div></a>
+      <a :href="`mailto:${$store.state.global.footer.email}?subject=🔴🔴🔴`" target="_blank" class="contact"><div class="icon email"></div></a>
+      <a :href="`https://instagram.com/${$store.state.global.footer.instagram}`" target="_blank" class="contact"><div class="icon instagram"></div></a>
+      <a class="contact theme" @click="changeTheme()">:)</a>
     </nav>
   </header>
 </template>
@@ -17,15 +18,18 @@
 export default {
   computed: {
     cssVars() {
-      if (this.colors && this.colors.darkColor && this.colors.lightColor) {
-        return {
-          '--bg-color': this.colors.darkColor.hex,
-          '--text-color': this.colors.lightColor.hex,
-        }
-      }
       return {
-        '--bg-color': '#fff',
-        '--text-color': this.$store.state.color,
+        '--color-text': this.$store.state.color
+      }
+    }
+  },
+  methods: {
+    changeTheme: function() {
+      document.body.classList.toggle('dark');
+      if (this.$store.state.theme === 'light') {
+        this.$store.commit('setTheme', 'dark');
+      } else {
+        this.$store.commit('setTheme', 'light');
       }
     }
   }
@@ -40,12 +44,16 @@ header {
   padding: var(--spacing-m) var(--spacing-l);
   position: relative;
   z-index: 3;
-  color: var(--text-color);
+  color: var(--color-text);
 
   .site-title {
     font-family: var(--sans-serif);
     font-size: 1rem;
     margin: 0;
+    transition: all .24s ease;
+    &:hover {
+      color: var(--color-hover);
+    }
   }
   a {
     display: inline-block;
@@ -61,11 +69,21 @@ header {
       padding: .4rem 0;
       vertical-align: middle;
       .icon {
-        background: var(--text-color);
+        background: var(--color-text);
         width: .8rem;
         height: .8rem;
         border-radius: 50%;
+        transition: all .24s ease;
       }
+      &:hover {
+        .icon {
+          background: var(--color-hover);
+        }
+      }
+    }
+
+    &.theme {
+      cursor: pointer;
     }
 
     &:after {
@@ -75,26 +93,23 @@ header {
       bottom: 0;
       width: 96%;
       height: 4px;
-      background: var(--text-color);
+      background: var(--color-text);
       opacity: 0;
       transform: translateY(10px);
       transition: all .1s;
     }
 
     &:hover {
-      color: inherit;
+      color: var(--color-hover);
       &:after {
         opacity: 1;
         transform: translateY(4px);
         transition: all .3s;
+        background: var(--color-hover);
       }
     }
 
     &.nuxt-link-active {
-      color: inherit;
-      &:hover {
-        color: inherit;
-      }
       &:after {
         opacity: 1;
         transform: translateY(4px);

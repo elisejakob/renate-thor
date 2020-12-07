@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.commit('setColor', '#000')
+    this.$store.commit('setColor', null)
   }
 }
 </script>

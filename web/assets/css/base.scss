@@ -19,6 +19,7 @@ body {
   font-weight: 600;
   line-height: 1.4;
   position: relative;
+  transition: all .24s ease-in-out;
 }
 
 header, main, footer {
@@ -68,7 +69,7 @@ a {
 }
 
 figure {
-  margin: 0 0 4rem;
+  margin: 0 0 2rem;
 }
 
 figcaption {

@@ -1,6 +1,6 @@
 <template>
   <div class="canvasbox">
-    <canvas :id="`paper-${id}`" class="paper" :width="canvasSize.width" :height="canvasSize.height" @mousemove="draw"></canvas>
+    <canvas :id="`paper-${id}`" class="paper" :width="canvasSize.width" :height="canvasSize.height"></canvas>
   </div>
 </template>
 
@@ -58,7 +58,7 @@ export default {
       }
     },
     draw(e) {
-      this.addPoint(e.offsetX, e.offsetY, true);
+      this.addPoint(e.pageX, e.pageY, true);
       this.drawLine();
     },
     resizeCanvas() {
@@ -68,10 +68,12 @@ export default {
   },
   destroyed() {
     window.removeEventListener("resize", this.resizeCanvas);
+    window.removeEventListener("mousemove", this.draw);
   },
   mounted() {
     this.resizeCanvas();
     window.addEventListener("resize", this.resizeCanvas);
+    window.addEventListener("mousemove", this.draw);
     const c = document.getElementById('paper-' + this.id);
     this.canvas = c.getContext('2d');
   }
