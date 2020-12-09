@@ -24,21 +24,6 @@ export default {
       title: 'Exhibitions'
     },
     {
-      name: 'content',
-      type: 'array',
-      title: 'Content',
-      of: [
-        {
-          type: 'richText',
-          title: 'Text'
-        },
-        {
-          type: 'mainImage',
-          title: 'Image'
-        }
-      ]
-    },
-    {
       name: 'colors',
       type: 'palette'
     }
