@@ -102,9 +102,6 @@ export default {
     if (this.colors && this.colors.darkColor && this.colors.lightColor) {
       this.$store.commit('setColors', this.colors)
     }
-  },
-  destroyed() {
-    this.$store.commit('setColors', {})
   }
 }
 </script>

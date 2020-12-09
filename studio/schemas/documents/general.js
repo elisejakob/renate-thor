@@ -4,6 +4,11 @@ export default {
   title: 'General',
   fields: [
     {
+      name: 'colors',
+      type: 'palette',
+      validation: Rule => Rule.error('Missing color palette.').required(),
+    },
+    {
       name: 'footer',
       type: 'footer',
       title: 'Footer',

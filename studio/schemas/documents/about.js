@@ -25,7 +25,8 @@ export default {
     },
     {
       name: 'colors',
-      type: 'palette'
+      type: 'palette',
+      validation: Rule => Rule.error('Missing color palette.').required(),
     }
   ],
   preview: {

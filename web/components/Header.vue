@@ -1,7 +1,10 @@
 <template>
   <header :style="cssVars">
     <h1 class="site-title">
-      <nuxt-link to="/" class="home">Renate Thor</nuxt-link>
+      <nuxt-link to="/" class="home">
+      Renate Thor
+        <!--<img src="/title.svg" alt="Renate Thor" class="logo" />-->
+      </nuxt-link>
     </h1>
     <nav>
       <nuxt-link to="/projects">Work</nuxt-link>
@@ -63,6 +66,12 @@ header {
     transition: all .24s ease;
     &:hover {
       color: var(--color-hover);
+    }
+    .logo {
+      width: 36rem;
+      position: absolute;
+      top: -.5rem;
+      left: -.5rem;
     }
   }
   a {

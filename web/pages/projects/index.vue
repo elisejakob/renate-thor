@@ -30,6 +30,9 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    this.$store.commit('setColors', this.$store.state.global.colors)
   }
 }
 </script>

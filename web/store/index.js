@@ -22,7 +22,8 @@ export const actions = {
   async nuxtServerInit ({ commit }) {
     const query = `
       *[_id == "general"][0] {
-        footer
+        footer,
+        colors
       }
     `
     await sanityClient.fetch(query).then(response => {
