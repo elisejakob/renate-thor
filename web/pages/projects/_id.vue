@@ -10,6 +10,7 @@
         <h1 class="project-title">
           {{ title }}
         </h1>
+        <Date :rawDate="publishedAt" yearonly />
         <div class="project-lead" v-if="lead">
           <p>{{ lead }}</p>
         </div>
@@ -28,6 +29,7 @@ import sanityClient from '~/sanityClient'
 import SanityImage from '~/components/SanityImage'
 import Content from '~/components/Content'
 import CanvasFullPage from '~/components/CanvasFullPage'
+import Date from '~/components/Date'
 
 const query = groq`
   *[_type == "project" && _id == $id] {
@@ -50,7 +52,8 @@ export default {
     BlockContent,
     SanityImage,
     Content,
-    CanvasFullPage
+    CanvasFullPage,
+    Date
   },
   async asyncData({ params }) {
     return await sanityClient.fetch(query, params)

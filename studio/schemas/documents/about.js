@@ -14,6 +14,16 @@ export default {
       title: 'Body'
     },
     {
+      name: 'clients',
+      type: 'bodyPortableText',
+      title: 'Clients'
+    },
+    {
+      name: 'exhibitions',
+      type: 'bodyPortableText',
+      title: 'Exhibitions'
+    },
+    {
       name: 'content',
       type: 'array',
       title: 'Content',
