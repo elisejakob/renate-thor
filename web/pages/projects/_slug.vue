@@ -1,6 +1,6 @@
 <template>
   <main class="project" :style="cssVars">
-    <CanvasFullPage id="about" :color="drawingColor" class="canvas" />
+    <CanvasFullPage id="project" :color="drawingColor" class="canvas" />
     <div class="project-content">
       <figure v-if="image" class="project-image">
         <SanityImage :image="image" />
@@ -32,7 +32,7 @@ import CanvasFullPage from '~/components/CanvasFullPage'
 import Date from '~/components/Date'
 
 const query = groq`
-  *[_type == "project" && _id == $id] {
+  *[_type == "project" && slug.current == $slug] {
     ...,
     projects[] {
       project-> {
@@ -60,18 +60,30 @@ export default {
   },
   computed: {
     cssVars() {
-      if (this.colors && this.colors.darkColor && this.colors.lightColor) {
-        return {
-          '--bg-color': this.colors.darkColor.hex,
-          '--text-color': this.colors.lightColor.hex,
+      if (this.$store.state.theme === 'dark') {
+        if (this.$store.state.colors.darkColor) {
+          return {
+            '--color-text': this.$store.state.colors.darkColor.hex
+          }
+        }
+      } else {
+        if (this.$store.state.colors.lightColor) {
+          return {
+            '--color-text': this.$store.state.colors.lightColor.hex
+          }
         }
       }
     },
     drawingColor() {
-      if (this.colors.lightColor) {
-        return this.colors.lightColor.hex
+      if (this.$store.state.theme === 'dark') {
+        if (this.$store.state.colors.darkColor) {
+          return this.$store.state.colors.darkColor.hex
+        }
+      } else {
+        if (this.$store.state.colors.lightColor) {
+          return this.$store.state.colors.lightColor.hex
+        }
       }
-      return '#000'
     }
   },
   head() {
@@ -88,14 +100,11 @@ export default {
   },
   mounted() {
     if (this.colors && this.colors.darkColor && this.colors.lightColor) {
-      this.$store.commit('setColor', this.colors.lightColor.hex)
-    } else {
-      if (this.$store.state.color === '#000') {
-        this.$store.commit('setColor', '#fff')
-      } else {
-        this.$store.commit('setColor', '#000')
-      }
+      this.$store.commit('setColors', this.colors)
     }
+  },
+  destroyed() {
+    this.$store.commit('setColors', {})
   }
 }
 </script>
@@ -110,7 +119,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 2rem;
-    color: var(--text-color);
+    color: var(--color-text);
     padding: 0 var(--spacing-m);
     align-items: center;
   }

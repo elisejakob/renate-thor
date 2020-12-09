@@ -9,9 +9,21 @@ export default {
       title: 'Title'
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      description: 'The slug is the end of the URL for this page. It should be short and can not contain any spaces or special characters. Ex. renatethor.com/projects/slug-goes-here',
+      validation: Rule => Rule.error('The page needs a slug.').required(),
+      options: {
+        source: 'title',
+        maxLength: 96
+      }
+    },
+    {
       name: 'publishedAt',
       title: 'Published',
-      type: 'datetime'
+      type: 'datetime',
+      validation: Rule => Rule.error('Missing publish date.').required(),
     },
     {
       title: 'Feature',
@@ -20,12 +32,14 @@ export default {
     },
     {
       name: 'colors',
-      type: 'palette'
+      type: 'palette',
+      validation: Rule => Rule.error('Missing color palette.').required(),
     },
     {
       name: 'image',
       type: 'mainImage',
-      title: 'Image'
+      title: 'Image',
+      validation: Rule => Rule.error('Missing main image.').required(),
     },
     {
       name: 'lead',
@@ -51,14 +65,12 @@ export default {
   preview: {
     select: {
       title: 'title',
-      projectType: 'projectType',
       media: 'image'
     },
-    prepare ({title, media, projectType}) {
+    prepare ({title, media}) {
       return {
         title,
-        media,
-        subtitle: `${projectType}`
+        media
       }
     }
   }

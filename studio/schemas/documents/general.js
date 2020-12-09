@@ -6,13 +6,15 @@ export default {
     {
       name: 'footer',
       type: 'footer',
-      title: 'Footer'
+      title: 'Footer',
+      validation: Rule => Rule.error('Missing footer info.').required()
     },
     {
       name: 'ogimg',
       type: 'image',
       title: 'Facebook image',
-      description: 'Displayed when sharing the website on Facebook and other social media platforms if no other image is available.'
+      description: 'Displayed when sharing the website on Facebook and other social media platforms if no other image is available.',
+      validation: Rule => Rule.error('Missing Facebook image.').required(),
     }
   ],
   preview: {

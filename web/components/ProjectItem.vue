@@ -2,8 +2,9 @@
   <li class="project" :style="cssVars">
     <div class="project-content">
       <Canvas :id="project._id" :color="drawingColor" class="canvas" />
+      <!--<SanityImage v-if="project.image" :image="project.image" class="project-image" />-->
       <figure class="project-image">
-        <nuxt-link :to="{ path: `/projects/${project._id}` }">
+        <nuxt-link :to="{ path: `/projects/${project.slug.current}` }">
           <SanityImage v-if="project.image" :image="project.image" />
         </nuxt-link>
       </figure>
@@ -81,7 +82,8 @@ export default {
     margin: 0;
     position: relative;
     z-index: 12;
-    flex: 1;
+    flex: none;
+    max-width: 50%;
   }
   &-text {
     color: var(--color-text);
@@ -112,6 +114,8 @@ export default {
     }
     .project-image {
       order: 2;
+      max-width: none;
+      width: 100%;
     }
     .project-text {
       order: 1;

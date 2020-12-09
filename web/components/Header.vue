@@ -9,7 +9,7 @@
       <nuxt-link to="/about">About</nuxt-link>
       <a :href="`mailto:${$store.state.global.footer.email}?subject=🔴🔴🔴`" target="_blank" class="contact"><div class="icon email"></div></a>
       <a :href="`https://instagram.com/${$store.state.global.footer.instagram}`" target="_blank" class="contact"><div class="icon instagram"></div></a>
-      <a class="contact theme" @click="changeTheme()">:)</a>
+      <a class="contact theme" @click="changeTheme()"><div class="icon"></div></a>
     </nav>
   </header>
 </template>
@@ -18,8 +18,18 @@
 export default {
   computed: {
     cssVars() {
-      return {
-        '--color-text': this.$store.state.color
+      if (this.$store.state.theme === 'dark') {
+        if (this.$store.state.colors.darkColor) {
+          return {
+            '--color-text': this.$store.state.colors.darkColor.hex
+          }
+        }
+      } else {
+        if (this.$store.state.colors.lightColor) {
+          return {
+            '--color-text': this.$store.state.colors.lightColor.hex
+          }
+        }
       }
     }
   },
@@ -84,6 +94,25 @@ header {
 
     &.theme {
       cursor: pointer;
+
+      .icon {
+        background: linear-gradient(90deg, var(--color-text) 50%, transparent 51%);
+        width: .8rem;
+        height: .8rem;
+        border-radius: 50%;
+        border: 4px solid var(--color-text);
+        transition: all .24s ease;
+      }
+      &:hover {
+        .icon {
+          background: linear-gradient(90deg, var(--color-hover) 50%, transparent 51%);
+          width: .8rem;
+          height: .8rem;
+          border-radius: 50%;
+          border: 4px solid var(--color-hover);
+          transition: all .24s ease;
+        }
+      }
     }
 
     &:after {

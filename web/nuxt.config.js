@@ -52,7 +52,7 @@ export default {
     routes: () => {
       return sanityClient.fetch(routesQuery).then(res => {
         return [
-          ...res.projects.map(item => `/projects/${item._id}`)
+          ...res.projects.map(item => `/projects/${item.slug.current}`)
         ]
       })
     }

@@ -45,18 +45,30 @@ export default {
   },
   computed: {
     cssVars() {
-      if (this.colors && this.colors.darkColor && this.colors.lightColor) {
-        return {
-          '--bg-color': this.colors.darkColor.hex,
-          '--text-color': this.colors.lightColor.hex,
+      if (this.$store.state.theme === 'dark') {
+        if (this.$store.state.colors.darkColor) {
+          return {
+            '--color-text': this.$store.state.colors.darkColor.hex
+          }
+        }
+      } else {
+        if (this.$store.state.colors.lightColor) {
+          return {
+            '--color-text': this.$store.state.colors.lightColor.hex
+          }
         }
       }
     },
     drawingColor() {
-      if (this.colors.lightColor) {
-        return this.colors.lightColor.hex
+      if (this.$store.state.theme === 'dark') {
+        if (this.$store.state.colors.darkColor) {
+          return this.$store.state.colors.darkColor.hex
+        }
+      } else {
+        if (this.$store.state.colors.lightColor) {
+          return this.$store.state.colors.lightColor.hex
+        }
       }
-      return '#000'
     }
   },
   async asyncData() {
@@ -76,8 +88,11 @@ export default {
   },
   mounted() {
     if (this.colors && this.colors.darkColor && this.colors.lightColor) {
-      this.$store.commit('setColor', this.colors.lightColor.hex)
+      this.$store.commit('setColors', this.colors)
     }
+  },
+  destroyed() {
+    this.$store.commit('setColors', {})
   }
 }
 </script>
@@ -87,7 +102,7 @@ export default {
 .about {
   padding: var(--spacing-m) var(--spacing-l) var(--spacing-xl);
   font-size: var(--font-xl);
-  color: var(--text-color);
+  color: var(--color-text);
 
   p {
     max-width: none;

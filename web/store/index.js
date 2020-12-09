@@ -1,14 +1,14 @@
 import sanityClient from '~/sanityClient'
 
 export const state = () => ({
-  color: null,
+  colors: {},
   theme: 'light',
   global: {}
 })
 
 export const mutations = {
-  setColor(state, color) {
-    state.color = color
+  setColors(state, colors) {
+    state.colors = colors
   },
   setTheme(state, theme) {
     state.theme = theme
