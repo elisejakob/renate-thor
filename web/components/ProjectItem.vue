@@ -1,5 +1,5 @@
 <template>
-  <li class="project" :style="cssVars">
+  <li class="project" :style="cssVars" :class="classes">
     <div class="project-content">
       <Canvas :id="project._id" :color="drawingColor" class="canvas" />
       <!--<SanityImage v-if="project.image" :image="project.image" class="project-image" />-->
@@ -32,6 +32,20 @@ export default {
     project: Object
   },
   computed: {
+    columns() {
+      if (this.project.columns) {
+        return 'column-' + this.project.columns
+      }
+    },
+    classes() {
+      if (this.project.landscape && this.project.columns) {
+        return ['landscape', this.columns]
+      } else if (this.project.columns) {
+        return [this.columns]
+      } else if (this.project.landscape) {
+        return ['landscape']
+      }
+    },
     cssVars() {
       if (this.project.colors && this.project.colors.darkColor && this.project.colors.lightColor) {
         if (this.$store.state.theme === 'dark') {
@@ -61,7 +75,7 @@ export default {
 @import '@/assets/css/variables.scss';
 
 .project {
-  width: 66%;
+  width: 100%;
   padding: var(--spacing-s);
   display: flex;
   align-items: stretch;
@@ -107,8 +121,29 @@ export default {
     display: block;
   }
 
-  &:nth-child(odd) {
+  &.column-1 {
     width: 33%;
+    p {
+      display: none;
+    }
+  }
+  &.column-2 {
+    width: 66%;
+  }
+  &.column-3 {
+    width: 100%;
+  }
+
+  &:nth-of-type(even) {
+    .project-image {
+      order: 2;
+    }
+    .project-text {
+      order: 1;
+    }
+  }
+
+  &.landscape {
     .project-content {
       flex-direction: column;
     }
@@ -119,9 +154,14 @@ export default {
     }
     .project-text {
       order: 1;
+    }
 
-      p {
-        display: none;
+    &:nth-of-type(even) {
+      .project-image {
+        order: 1;
+      }
+      .project-text {
+        order: 2;
       }
     }
   }

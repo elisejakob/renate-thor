@@ -26,9 +26,23 @@ export default {
       validation: Rule => Rule.error('Missing publish date.').required(),
     },
     {
-      title: 'Feature',
+      title: 'Featured',
       name: 'featured',
-      type: 'boolean'
+      type: 'boolean',
+      description: 'Featured projects are displayed on the front page.'
+    },
+    {
+      title: 'Landscape image',
+      name: 'landscape',
+      type: 'boolean',
+      description: 'Image and text is stacked vertically.'
+    },
+    {
+      title: 'Columns',
+      name: 'columns',
+      type: 'number',
+      description: 'From 1 up to 3. The number of columns this project takes up in the projects overview grid. If no number is set, the project will take up 3 columns.',
+      validation: Rule => Rule.error('Missing publish date.').min(1).max(2),
     },
     {
       name: 'colors',

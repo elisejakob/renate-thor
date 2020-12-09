@@ -2,6 +2,12 @@ export default {
   widgets: [
     {name: 'structure-menu'},
     {
+      name: 'document-list',
+      options: {title: 'Recently created projects', order: '_createdAt desc', types: ['project']},
+      layout: {width: 'medium'}
+    },
+    {name: 'project-users', layout: {height: 'auto'}},
+    {
       name: 'project-info',
       options: {
         __experimental_before: [
@@ -36,12 +42,6 @@ export default {
           {title: 'Frontend', value: 'https://renate-thor.netlify.app', category: 'apps'}
         ]
       }
-    },
-    {name: 'project-users', layout: {height: 'auto'}},
-    {
-      name: 'document-list',
-      options: {title: 'Recently created projects', order: '_createdAt desc', types: ['project']},
-      layout: {width: 'medium'}
     }
   ]
 }
