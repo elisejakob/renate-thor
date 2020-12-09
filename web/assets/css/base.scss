@@ -50,10 +50,6 @@ p {
   max-width: 36rem;
   margin: 0;
 
-  + p {
-    text-indent: 3em;
-  }
-
   &.lead {
     max-width: 54rem;
     line-height: 1.5;
