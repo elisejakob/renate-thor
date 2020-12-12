@@ -8,6 +8,9 @@
         :v-if="$store.state.global.footer.credit"
       />
     </div>
+    <div class="totop" @click="toTop()">
+      To top &uarr;
+    </div>
   </footer>
 </template>
 
@@ -17,6 +20,14 @@ import BlockContent from 'sanity-blocks-vue-component'
 export default {
   components: {
     BlockContent
+  },
+  methods: {
+    toTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
   }
 }
 </script>
@@ -37,9 +48,13 @@ footer {
   }
 
   .credit {
-    width: 100%;
     margin-top: 1rem;
     opacity: .4;
+  }
+  .totop {
+    margin-top: 1rem;
+    opacity: .4;
+    cursor: pointer;
   }
 }
 </style>

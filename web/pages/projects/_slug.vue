@@ -39,7 +39,8 @@ const query = groq`
         ...,
         image {
           ...,
-          asset->
+          asset->,
+          "ogimage": asset->url
         },
         content
       }
@@ -94,6 +95,21 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.lead
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.title + ' | Renate Thor'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.lead
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.image.ogimage
         }
       ]
     }
@@ -122,6 +138,7 @@ export default {
   }
   &-image {
     grid-column: 1 / span 6;
+    align-self: flex-start;
 
     img {
       width: 100%;
@@ -129,6 +146,7 @@ export default {
   }
   &-text {
     grid-column: 7 / span 6;
+    margin-bottom: 2rem;
   }
   &-title {
     font-size: var(--font-l);

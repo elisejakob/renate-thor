@@ -10,7 +10,10 @@ import ProjectList from '~/components/ProjectList'
 
 const query = `
   {
-    "projects": *[_type == "project"]
+    "projects": *[_type == "project"] | order(publishedAt desc),
+    "about": *[_id == "about"][0] {
+      lead
+    }
   }
 `
 
@@ -26,7 +29,17 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.lead
+          content: this.about.lead
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'Projects | Renate Thor'
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.$store.state.global.ogimage
         }
       ]
     }

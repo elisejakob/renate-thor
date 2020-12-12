@@ -1,11 +1,12 @@
 <template>
   <li class="project" :style="cssVars" :class="classes">
     <div class="project-content">
-      <Canvas :id="project._id" :color="drawingColor" class="canvas" />
+      <Canvas v-if="ready" :id="project._id" :color="drawingColor" class="canvas" />
       <!--<SanityImage v-if="project.image" :image="project.image" class="project-image" />-->
       <figure class="project-image">
         <nuxt-link :to="{ path: `/projects/${project.slug.current}` }">
-          <SanityImage v-if="project.image" :image="project.image" />
+        <img v-if="project.image" :src="imageUrl" @load="ready = true" />
+          <!--<SanityImage v-if="project.image" @load="ready = true" :image="project.image" />-->
         </nuxt-link>
       </figure>
       <div class="project-text">
@@ -21,15 +22,21 @@
 </template>
 <script>
 import Canvas from '~/components/Canvas'
-import SanityImage from '~/components/SanityImage'
+import sanityClient from '~/sanityClient'
+import imageUrlBuilder from '@sanity/image-url'
+const builder = imageUrlBuilder(sanityClient)
 
 export default {
   components: {
-    Canvas,
-    SanityImage
+    Canvas
   },
   props: {
     project: Object
+  },
+  data() {
+    return {
+      ready: false
+    }
   },
   computed: {
     columns() {
@@ -66,6 +73,12 @@ export default {
         return this.project.colors.lightColor.hex
       }
       return '#000'
+    },
+    imageUrl: function() {
+      return builder
+        .image(this.project.image)
+        .auto('format')
+        .fit('max')
     }
   }
 }
@@ -164,6 +177,12 @@ export default {
         order: 2;
       }
     }
+  }
+}
+@media (max-width: 1000px) {
+  .project {
+    width: 100% !important;
+    flex-direction: row !important;
   }
 }
 </style>

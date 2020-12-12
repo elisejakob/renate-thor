@@ -82,6 +82,21 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.lead
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'About | Renate Thor'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.lead
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.$store.state.global.ogimage
         }
       ]
     }

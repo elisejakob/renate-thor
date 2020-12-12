@@ -62,8 +62,8 @@ export default {
       this.drawLine();
     },
     resizeCanvas() {
-      this.canvasSize.height = this.$el.offsetHeight;
-      this.canvasSize.width = this.$el.offsetWidth;
+      this.canvasSize.height = this.$parent.$el.offsetHeight;
+      this.canvasSize.width = this.$parent.$el.offsetWidth;
     }
   },
   destroyed() {

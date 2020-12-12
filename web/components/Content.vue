@@ -1,13 +1,16 @@
 <template>
   <div class="content">
-    <div v-for="(section, index) in sections" :key="index" class="content-section">
-      <ImageWithCaption :image="section" v-if="section._type == 'mainImage'" />
-      <RichText :content="section" v-if="section._type == 'richText'" />
-    </div>
+    <VueMasonryWall :items="sections" :options="options">
+      <template v-slot:default="{item}">
+        <ImageWithCaption :image="item" v-if="item._type == 'mainImage'" />
+        <RichText :content="item" v-if="item._type == 'richText'" />
+      </template>
+    </VueMasonryWall>
   </div>
 </template>
 
 <script>
+import VueMasonryWall from "vue-masonry-wall";
 import ImageWithCaption from "~/components/ImageWithCaption.vue"
 import RichText from "~/components/RichText.vue"
 
@@ -16,8 +19,21 @@ export default {
     sections: Array
   },
   components: {
+    VueMasonryWall,
     ImageWithCaption,
     RichText
+  },
+  data() {
+    return {
+      options: {
+        width: 600,
+        padding: {
+          default: 20,
+          1: 20,
+          2: 20
+        }
+      }
+    }
   }
 }
 </script>
@@ -29,8 +45,8 @@ export default {
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 2rem;
 
-  p, div {
-    grid-column: span 6;
+  div {
+    grid-column: span 12;
   }
 }
 </style>

@@ -23,7 +23,8 @@ export const actions = {
     const query = `
       *[_id == "general"][0] {
         footer,
-        colors
+        colors,
+        "ogimage": ogimg.asset->url
       }
     `
     await sanityClient.fetch(query).then(response => {
