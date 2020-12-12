@@ -126,6 +126,7 @@ export default {
 @import '@/assets/css/variables.scss';
 
 .project {
+  padding-top: 1rem;
   &-content {
     position: relative;
     z-index: 10;
@@ -139,6 +140,7 @@ export default {
   &-image {
     grid-column: 1 / span 6;
     align-self: flex-start;
+    margin-bottom: 2rem;
 
     img {
       width: 100%;
