@@ -76,10 +76,6 @@ export default {
       title: 'Content',
       of: [
         {
-          type: 'richText',
-          title: 'Text'
-        },
-        {
           type: 'mainImage',
           title: 'Image'
         }
