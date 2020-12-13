@@ -37,7 +37,7 @@ export default {
 footer {
   display: flex;
   justify-content: space-between;
-  padding: var(--spacing-m) var(--spacing-l);
+  padding: var(--spacing-l) var(--spacing-l) var(--spacing-m);
   flex-wrap: wrap;
   position: relative;
   z-index: 12;

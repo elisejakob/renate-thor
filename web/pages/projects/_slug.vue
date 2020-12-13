@@ -10,18 +10,18 @@
         <h1 class="project-title">
           {{ title }}
         </h1>
-        <Date :rawDate="publishedAt" yearonly />
-        <div class="project-lead" v-if="lead">
+        <!--<div class="project-lead" v-if="lead">
           <p>{{ lead }}</p>
-        </div>
+        </div>-->
       </div>
     </div>
     <div class="project-details">
-      <div class="project-meta">
-        <BlockContent v-if="meta" :blocks="meta" />
-      </div>
       <div class="project-description">
         <BlockContent v-if="description" :blocks="description" />
+      </div>
+      <div class="project-meta">
+        Year: <Date :rawDate="publishedAt" yearonly />
+        <BlockContent v-if="meta" :blocks="meta" />
       </div>
     </div>
     <div class="project-gallery">
@@ -170,22 +170,24 @@ export default {
   &-title {
     font-size: var(--font-l);
     font-family: var(--sans-serif);
-    margin: 0 0 4rem;
+    margin: 0;
   }
   &-details {
-    padding: 0 var(--spacing-m);
+    padding: 0 var(--spacing-l);
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 2rem;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
   }
   &-meta {
     grid-column: 1 / span 6;
     opacity: .6;
     font-size: .8rem;
+    order: 1;
   }
   &-description {
     grid-column: 7 / span 6;
+    order: 2;
   }
   &-gallery {
     padding: 0 var(--spacing-m);

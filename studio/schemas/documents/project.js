@@ -58,17 +58,20 @@ export default {
     {
       name: 'lead',
       type: 'text',
-      title: 'Lead'
+      title: 'Lead',
+      description: 'Only appears on the front page / project overview.'
     },
     {
       type: 'bodyPortableText',
       name: 'description',
-      title: 'Description'
+      title: 'Description',
+      description: 'Appears on the page for this project and not in the overview.'
     },
     {
       type: 'bodyPortableText',
       name: 'meta',
-      title: 'Details'
+      title: 'Details',
+      description: 'Meta information about the project. Client, size, etc. Year is shown automatically based on publishing date (above).'
     },
     {
       name: 'content',
