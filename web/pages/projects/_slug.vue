@@ -1,6 +1,6 @@
 <template>
   <main class="project" :style="cssVars">
-    <CanvasFullPage id="project" :color="drawingColor" class="canvas" />
+    <CanvasFullPage id="project" :color="drawingColor" class="canvas" v-if="imagesLoaded" />
     <div class="project-content">
       <figure v-if="image" class="project-image">
         <SanityImage :image="image" />
@@ -15,9 +15,17 @@
           <p>{{ lead }}</p>
         </div>
       </div>
-      <div class="project-gallery">
-        <Content v-if="content" :sections="content" />
+    </div>
+    <div class="project-details">
+      <div class="project-meta">
+        <BlockContent v-if="meta" :blocks="meta" />
       </div>
+      <div class="project-description">
+        <BlockContent v-if="description" :blocks="description" />
+      </div>
+    </div>
+    <div class="project-gallery">
+      <Content v-if="content" :sections="content" />
     </div>
   </main>
 </template>
@@ -85,6 +93,12 @@ export default {
           return this.$store.state.colors.lightColor.hex
         }
       }
+    },
+    imagesLoaded() {
+      if (this.content && (this.$store.state.imagesLoaded.length === this.content.length)) {
+        return true
+      }
+      return false
     }
   },
   head() {
@@ -118,6 +132,9 @@ export default {
     if (this.colors && this.colors.darkColor && this.colors.lightColor) {
       this.$store.commit('setColors', this.colors)
     }
+  },
+  destroyed() {
+    this.$store.commit('emptyImagesLoaded')
   }
 }
 </script>
@@ -127,13 +144,13 @@ export default {
 
 .project {
   padding-top: 1rem;
+  color: var(--color-text);
   &-content {
     position: relative;
     z-index: 10;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 2rem;
-    color: var(--color-text);
     padding: 0 var(--spacing-m);
     align-items: center;
   }
@@ -155,11 +172,23 @@ export default {
     font-family: var(--sans-serif);
     margin: 0 0 4rem;
   }
-  &-gallery {
-    grid-column: 1 / span 12;
+  &-details {
+    padding: 0 var(--spacing-m);
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  &-meta {
+    grid-column: 1 / span 6;
+    opacity: .6;
+    font-size: .8rem;
+  }
+  &-description {
+    grid-column: 7 / span 6;
+  }
+  &-gallery {
+    padding: 0 var(--spacing-m);
   }
 }
 @keyframes fadeDown {

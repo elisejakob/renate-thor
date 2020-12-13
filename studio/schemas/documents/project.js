@@ -61,6 +61,16 @@ export default {
       title: 'Lead'
     },
     {
+      type: 'bodyPortableText',
+      name: 'description',
+      title: 'Description'
+    },
+    {
+      type: 'bodyPortableText',
+      name: 'meta',
+      title: 'Details'
+    },
+    {
       name: 'content',
       type: 'array',
       title: 'Content',

@@ -3,7 +3,8 @@ import sanityClient from '~/sanityClient'
 export const state = () => ({
   colors: {},
   theme: 'light',
-  global: {}
+  global: {},
+  imagesLoaded: []
 })
 
 export const mutations = {
@@ -15,6 +16,12 @@ export const mutations = {
   },
   setGlobal(state, global) {
     state.global = global
+  },
+  setImagesLoaded(state, image) {
+    state.imagesLoaded.push(image)
+  },
+  emptyImagesLoaded(state) {
+    state.imagesLoaded = []
   }
 }
 
