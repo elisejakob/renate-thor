@@ -189,6 +189,8 @@ export default {
   }
   &-gallery {
     padding: 0 var(--spacing-m);
+    position: relative;
+    z-index: 1;
   }
 }
 @keyframes fadeDown {
