@@ -122,6 +122,7 @@ export default {
 
     h2 {
       font-size: var(--font-m);
+      margin: 0 0 .6rem;
     }
 
     p {

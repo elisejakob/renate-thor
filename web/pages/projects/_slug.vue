@@ -182,7 +182,7 @@ export default {
   &-meta {
     grid-column: 1 / span 4;
     opacity: .6;
-    font-size: .7rem;
+    font-size: var(--font-s);
     order: 1;
   }
   &-description {
