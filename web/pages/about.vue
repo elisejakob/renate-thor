@@ -115,6 +115,7 @@ export default {
   padding: var(--spacing-m) var(--spacing-l) var(--spacing-xl);
   font-size: var(--font-xl);
   color: var(--color-text);
+  max-width: 1400px;
 
   p {
     max-width: none;

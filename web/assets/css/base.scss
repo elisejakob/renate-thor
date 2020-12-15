@@ -15,7 +15,7 @@ body {
   min-height: 100%;
   color: var(--color-text);
   background: var(--color-background);
-  font-family: var(--sans-serif);
+  font-family: var(--heading);
   font-weight: 600;
   line-height: 1.4;
   position: relative;
@@ -29,7 +29,8 @@ header, main, footer {
 
 main {
   margin: 0 auto;
-  max-width: 1400px;
+  padding-top: .5rem;
+  max-width: none;
   opacity: 0;
   animation: fade .3s ease;
   animation-fill-mode: forwards;
@@ -44,6 +45,9 @@ main {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   margin-top: 0;
+  font-family: var(--heading);
+  font-weight: 900;
+  letter-spacing: 0.025em;
 }
 
 p {

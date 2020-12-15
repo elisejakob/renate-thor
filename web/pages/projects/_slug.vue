@@ -145,6 +145,7 @@ export default {
 .project {
   padding-top: 1rem;
   color: var(--color-text);
+  max-width: 1400px;
   &-content {
     position: relative;
     z-index: 10;
@@ -155,7 +156,7 @@ export default {
     align-items: center;
   }
   &-image {
-    grid-column: 1 / span 6;
+    grid-column: 1 / span 8;
     align-self: flex-start;
     margin-bottom: 2rem;
 
@@ -164,12 +165,11 @@ export default {
     }
   }
   &-text {
-    grid-column: 7 / span 6;
+    grid-column: 9 / span 4;
     margin-bottom: 2rem;
   }
   &-title {
     font-size: var(--font-l);
-    font-family: var(--sans-serif);
     margin: 0;
   }
   &-details {
@@ -180,13 +180,13 @@ export default {
     margin: 0 auto 2rem;
   }
   &-meta {
-    grid-column: 1 / span 6;
+    grid-column: 1 / span 4;
     opacity: .6;
-    font-size: .8rem;
+    font-size: .7rem;
     order: 1;
   }
   &-description {
-    grid-column: 7 / span 6;
+    grid-column: 5 / span 8;
     order: 2;
   }
   &-gallery {

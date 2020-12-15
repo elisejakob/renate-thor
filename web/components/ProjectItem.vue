@@ -135,16 +135,13 @@ export default {
   }
 
   &.column-1 {
-    width: 33%;
-    p {
-      display: none;
-    }
+    width: 400px;
   }
   &.column-2 {
-    width: 66%;
+    width: 600px;
   }
   &.column-3 {
-    width: 100%;
+    width: 900px;
   }
 
   &:nth-of-type(even) {
@@ -169,7 +166,7 @@ export default {
       order: 1;
     }
 
-    &:nth-of-type(even) {
+    &:nth-of-type(odd) {
       .project-image {
         order: 1;
       }
