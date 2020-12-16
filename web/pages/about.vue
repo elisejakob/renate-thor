@@ -134,7 +134,13 @@ export default {
     h2 {
       font-size: 1em;
       text-decoration: underline;
+      font-weight: inherit;
     }
+  }
+}
+@media (max-width: 1200px) {
+  .about {
+    padding: 1rem 2rem 8rem;
   }
 }
 </style>

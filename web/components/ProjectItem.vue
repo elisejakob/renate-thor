@@ -201,10 +201,63 @@ export default {
     }
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
+  .project {
+    &.column-1 {
+      width: 50%;
+      .project-content {
+        flex-direction: column !important;
+        .project-image {
+          width: 100%;
+        }
+      }
+    }
+    &.column-2 {
+      width: 50%;
+      .project-content {
+        flex-direction: column !important;
+      }
+      .project-image {
+        width: 100%;
+      }
+    }
+    &.column-3 {
+      width: 100%;
+    }
+    .project-image {
+      order: 1 !important;
+    }
+    .project-text {
+      order: 2 !important;
+    }
+    &:nth-of-type(even) {
+      .project-image {
+        order: 2 !important;
+      }
+      .project-text {
+        order: 1 !important;
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
   .project {
     width: 100% !important;
     flex-direction: row !important;
+    .project-image {
+      order: 1 !important;
+    }
+    .project-text {
+      order: 2 !important;
+    }
+    &:nth-of-type(even) {
+      .project-image {
+        order: 1 !important;
+      }
+      .project-text {
+        order: 2 !important;
+      }
+    }
   }
 }
 </style>

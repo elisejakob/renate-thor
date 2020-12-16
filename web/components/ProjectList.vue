@@ -37,4 +37,10 @@ export default {
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 1200px) {
+  .project-list {
+    align-items: stretch;
+    padding: 0 1rem 8rem;
+  }
+}
 </style>

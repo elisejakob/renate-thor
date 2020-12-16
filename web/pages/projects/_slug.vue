@@ -201,4 +201,16 @@ export default {
     transform: translateY(0);
   }
 }
+@media (max-width: 1200px) {
+  .project-details, .project-content {
+    display: block;
+    padding: 0 2rem;
+  }
+  .project-meta {
+    margin: 1rem 0;
+  }
+  .project {
+    padding-bottom: 8rem;
+  }
+}
 </style>
