@@ -31,9 +31,10 @@ export default {
   margin: 0;
   padding: 0 var(--spacing-m);
   list-style: none;
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
 }
 </style>

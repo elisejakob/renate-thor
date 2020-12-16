@@ -42,7 +42,7 @@ export default {
       name: 'columns',
       type: 'number',
       description: 'From 1 up to 3. The number of columns this project takes up in the projects overview grid. If no number is set, the project will take up 3 columns.',
-      validation: Rule => Rule.error('Missing publish date.').min(1).max(2),
+      validation: Rule => Rule.error('Column must be a number from 1 to 3.').min(1).max(3),
     },
     {
       name: 'colors',

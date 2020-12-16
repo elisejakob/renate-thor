@@ -92,12 +92,15 @@ export default {
   padding: var(--spacing-s);
   display: flex;
   align-items: stretch;
+  text-align: left;
 
   &-content {
     display: flex;
     justify-content: space-between;
     border: 6px solid var(--color-text);
     position: relative;
+    overflow: hidden;
+    width: 100%;
   }
 
   a {
@@ -110,7 +113,17 @@ export default {
     position: relative;
     z-index: 12;
     flex: none;
-    max-width: 50%;
+    width: 50%;
+    a {
+      height: 100%;
+      width: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
   }
   &-text {
     color: var(--color-text);
@@ -136,16 +149,16 @@ export default {
   }
 
   &.column-1 {
-    width: 400px;
+    width: 33%;
   }
   &.column-2 {
-    width: 600px;
+    width: 66%;
   }
   &.column-3 {
-    width: 900px;
+    width: 99%;
   }
 
-  &:nth-of-type(even) {
+  &:nth-of-type(odd) {
     .project-image {
       order: 2;
     }
@@ -162,6 +175,17 @@ export default {
       order: 2;
       max-width: none;
       width: 100%;
+      a {
+        height: auto;
+        width: 100%;
+
+        img {
+          height: auto;
+          width: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+      }
     }
     .project-text {
       order: 1;
