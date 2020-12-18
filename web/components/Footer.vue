@@ -61,6 +61,17 @@ footer {
   footer {
     max-width: none;
     padding: 1rem;
+    display: block;
+    padding-bottom: 2rem;
+    .contact {
+      font-size: 1rem;
+    }
+    .credit, .totop {
+      font-size: 14px;
+    }
+    .totop {
+      text-align: right;
+    }
   }
 }
 </style>
