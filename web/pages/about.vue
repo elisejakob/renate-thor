@@ -140,6 +140,17 @@ export default {
 }
 @media (max-width: 1200px) {
   .about {
+    padding: 1rem 2rem 8rem;
+    &-blocks {
+      display: block;
+      div {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .about {
     padding: 1rem 1rem 8rem;
     font-size: var(--font-m);
     &-blocks {
