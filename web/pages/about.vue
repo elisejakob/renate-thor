@@ -141,6 +141,13 @@ export default {
 @media (max-width: 1200px) {
   .about {
     padding: 1rem 1rem 8rem;
+    font-size: var(--font-m);
+    &-blocks {
+      display: block;
+      div {
+        margin-bottom: 2rem;
+      }
+    }
   }
 }
 </style>

@@ -223,6 +223,9 @@ export default {
   }
   .project {
     padding-bottom: 8rem;
+    &-title {
+      font-size: var(--font-m);
+    }
   }
   .project-gallery {
     width: 100%;

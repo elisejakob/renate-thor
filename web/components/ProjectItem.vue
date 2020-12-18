@@ -250,6 +250,9 @@ export default {
     }
     .project-text {
       order: 2 !important;
+      h2 {
+        font-size: 28px;
+      }
     }
     &:nth-of-type(even) {
       .project-image {
