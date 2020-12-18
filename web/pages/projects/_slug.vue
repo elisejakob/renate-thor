@@ -213,4 +213,19 @@ export default {
     padding-bottom: 8rem;
   }
 }
+@media (max-width: 800px) {
+  .project-details, .project-content {
+    display: block;
+    padding: 0 1rem;
+  }
+  .project-meta {
+    margin: 1rem 0;
+  }
+  .project {
+    padding-bottom: 8rem;
+  }
+  .project-gallery {
+    width: 100%;
+  }
+}
 </style>

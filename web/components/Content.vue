@@ -40,6 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .content {
+  max-width: 100%;
   grid-column: 1 / span 12;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -47,6 +48,11 @@ export default {
 
   div {
     grid-column: span 12;
+  }
+}
+@media (max-width: 1200px) {
+  .content {
+    display: block;
   }
 }
 </style>

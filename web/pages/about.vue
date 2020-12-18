@@ -140,7 +140,7 @@ export default {
 }
 @media (max-width: 1200px) {
   .about {
-    padding: 1rem 2rem 8rem;
+    padding: 1rem 1rem 8rem;
   }
 }
 </style>

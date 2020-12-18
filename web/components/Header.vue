@@ -213,8 +213,9 @@ header {
 @media (max-width: 960px) {
   header {
     display: block;
+    padding: 1rem;
     .site-title .logo {
-      width: 8rem;
+      width: 45%;
       position: static;
     }
     nav {
@@ -222,13 +223,14 @@ header {
       display: flex;
       justify-content: space-between;
       padding: 1rem 0 0;
+      font-size: 20px;
       .contact-links {
         display: block;
         position: absolute;
-        top: 1rem;
-        right: 2rem;
+        top: .6rem;
+        right: 1rem;
         a {
-          margin: 0 0 0 .6rem;
+          margin: 0 0 0 .3rem;
           &:after {display: none}
         }
       }

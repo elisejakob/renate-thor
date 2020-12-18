@@ -244,6 +244,7 @@ export default {
   .project {
     width: 100% !important;
     flex-direction: row !important;
+    padding: .6rem 0;
     .project-image {
       order: 1 !important;
     }

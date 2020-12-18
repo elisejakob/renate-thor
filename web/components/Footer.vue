@@ -60,7 +60,7 @@ footer {
 @media (max-width: 1200px) {
   footer {
     max-width: none;
-    padding: 1rem 2rem;
+    padding: 1rem;
   }
 }
 </style>
