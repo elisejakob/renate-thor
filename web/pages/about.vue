@@ -144,6 +144,7 @@ export default {
     font-size: var(--font-m);
     &-blocks {
       display: block;
+      font-size: 1rem;
       div {
         margin-bottom: 2rem;
       }
